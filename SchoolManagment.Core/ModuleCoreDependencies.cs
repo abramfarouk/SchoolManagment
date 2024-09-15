@@ -14,8 +14,6 @@ namespace SchoolManagment.Core
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-
-
             // Get Validators
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));

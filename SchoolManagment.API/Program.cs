@@ -1,6 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using SchoolManagment.Core;
+using SchoolManagment.Core.MiddleWare;
 using SchoolManagment.Infrastructure;
 using SchoolManagment.Infrastructure.Data;
 using SchoolManagment.Services;
@@ -32,7 +33,8 @@ namespace SchoolManagment.API
             #region Dependency Injection
             builder.Services.AddInfrastructureDependencies()
                 .AddServicesDependencies()
-                .AddCoreDependecies();
+                .AddCoreDependecies()
+                .AddServiceRegisteration(builder.Configuration);
 
             #endregion
 
@@ -47,6 +49,7 @@ namespace SchoolManagment.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseMiddleware<ErrorHandlerMiddleware>();
 
             app.UseHttpsRedirection();
 

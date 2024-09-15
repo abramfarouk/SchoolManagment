@@ -3,7 +3,6 @@
 namespace SchoolManagment.Core.Bases
 {
 
-
     public class Response<T>
     {
         public Response()

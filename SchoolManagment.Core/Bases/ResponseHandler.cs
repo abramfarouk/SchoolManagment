@@ -1,6 +1,7 @@
 ﻿namespace SchoolManagment.Core.Bases
 {
 
+
     public class ResponseHandler
     {
 
@@ -44,6 +45,16 @@
                 StatusCode = System.Net.HttpStatusCode.BadRequest,
                 Succeeded = false,
                 Message = Message == null ? "Bad Request" : Message
+            };
+        }
+
+        public Response<List<T>> BadRequestT<T>(string Message = null)
+        {
+            return new Response<List<T>>()
+            {
+                StatusCode = System.Net.HttpStatusCode.BadRequest,
+                Succeeded = false,
+                Message = Message ?? "Bad Request"
             };
         }
 
