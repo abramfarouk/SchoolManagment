@@ -140,7 +140,7 @@ namespace SchoolManagment.Infrastructure.Migrations
 
                     b.HasKey("DID");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("SchoolManagment.Data.Entities.DepartmetSubject", b =>
@@ -163,7 +163,7 @@ namespace SchoolManagment.Infrastructure.Migrations
 
                     b.HasIndex("SubID");
 
-                    b.ToTable("DepartmetSubjects");
+                    b.ToTable("DepartmetSubjects", (string)null);
                 });
 
             modelBuilder.Entity("SchoolManagment.Data.Entities.Identity.Role", b =>
@@ -302,7 +302,7 @@ namespace SchoolManagment.Infrastructure.Migrations
 
                     b.HasIndex("DID");
 
-                    b.ToTable("Students");
+                    b.ToTable("Students", (string)null);
                 });
 
             modelBuilder.Entity("SchoolManagment.Data.Entities.StudentSubject", b =>
@@ -325,7 +325,7 @@ namespace SchoolManagment.Infrastructure.Migrations
 
                     b.HasIndex("SubID");
 
-                    b.ToTable("StudentSubjects");
+                    b.ToTable("StudentSubjects", (string)null);
                 });
 
             modelBuilder.Entity("SchoolManagment.Data.Entities.Subjects", b =>
@@ -346,7 +346,7 @@ namespace SchoolManagment.Infrastructure.Migrations
 
                     b.HasKey("SubID");
 
-                    b.ToTable("Subjects");
+                    b.ToTable("Subjects", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
