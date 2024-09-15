@@ -19,10 +19,4 @@
     <ProjectReference Include="..\SchoolManagment.Services\SchoolManagment.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\User\Queries\Handler\" />
-    <Folder Include="Features\User\Queries\Models\" />
-    <Folder Include="Mapping\User\QueryMapping\" />
-  </ItemGroup>
-
 </Project>
