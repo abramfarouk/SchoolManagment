@@ -3,11 +3,11 @@ using SchoolManagment.Core.Features.User.Commands.Models;
 
 namespace SchoolManagment.Core.Features.User.Commands.Validation
 {
-    public class AddUserValidator : AbstractValidator<AddUserCommand>
+    public class UpdateValidator : AbstractValidator<UpdateUserCommand>
     {
 
 
-        public AddUserValidator()
+        public UpdateValidator()
         {
             ApplyValidationRules();
 
@@ -43,18 +43,8 @@ namespace SchoolManagment.Core.Features.User.Commands.Validation
       .WithMessage("Invalid email address format. explample@gmail.com");
 
 
-            RuleFor(x => x.Password)
-      .NotEmpty().WithMessage("{PropertyName} is Not Empty")
-      .NotNull().WithMessage("{ProperyName} is Not Null");
-
-
-            RuleFor(x => x.ConfirmPassword)
-      .NotEmpty().WithMessage("{PropertyName} is Not Empty")
-      .NotNull().WithMessage("{ProperyName} is Not Null")
-                .Equal(x => x.Password)
-                .WithMessage("Passwords do not match.");
-
         }
 
     }
+
 }

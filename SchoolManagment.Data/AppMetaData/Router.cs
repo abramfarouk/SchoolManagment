@@ -29,6 +29,7 @@
             public const string Create = Prefix + "Regiter";
             public const string Pagination = Prefix + "Pagination";
             public const string Delete = Prefix + "Delete";
+            public const string Edit = Prefix + "Edit";
 
 
         }

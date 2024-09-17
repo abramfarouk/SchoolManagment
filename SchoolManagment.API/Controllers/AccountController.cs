@@ -32,5 +32,21 @@ namespace SchoolManagment.API.Controllers
         }
 
 
+        [HttpPut(Router.AccountRouting.Edit)]
+        public async Task<IActionResult> UpdateUserAsync(UpdateUserCommand command)
+        {
+            var response = await _mediator.Send(command);
+            return Ok(response);
+        }
+
+
+        [HttpDelete(Router.AccountRouting.Delete)]
+        public async Task<IActionResult> DeleteUserAsync(int Id)
+        {
+            var response = await _mediator.Send(new DeleteUserByIdCommand(Id));
+            return Ok(response);
+        }
+
+
     }
 }

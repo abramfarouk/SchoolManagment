@@ -9,7 +9,10 @@ using user = SchoolManagment.Data.Entities.Identity.User;
 namespace SchoolManagment.Core.Features.User.Commands.Handler
 {
 
-    public class AddUserCommandHandler : ResponseHandler, IRequestHandler<AddUserCommand, Response<string>>
+    public class AddUserCommandHandler : ResponseHandler
+        , IRequestHandler<AddUserCommand, Response<string>>
+        , IRequestHandler<UpdateUserCommand, Response<string>>
+        , IRequestHandler<DeleteUserByIdCommand, Response<string>>
     {
 
         private readonly IMapper _mapper;
@@ -47,6 +50,48 @@ namespace SchoolManagment.Core.Features.User.Commands.Handler
                 }
             }
             return BadRequest<string>("Failed");
+
+        }
+
+        public async Task<Response<string>> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+        {
+
+            //findUser
+            var OldUser = await _userManager.FindByIdAsync(request.Id.ToString());
+            if (OldUser == null) { return NotFound<string>($"ID is not Founded {request.Id}"); }
+            //mappING
+
+            var newuser = _mapper.Map(request, OldUser);
+            if (newuser == null) { return BadRequest<string>(); }
+
+            var result = await _userManager.UpdateAsync(newuser);
+            if (result.Succeeded)
+            {
+                return Success("Successfull Updated");
+            }
+
+            return BadRequest<string>("Failed Updated");
+
+
+
+
+        }
+
+        public async Task<Response<string>> Handle(DeleteUserByIdCommand request, CancellationToken cancellationToken)
+        {
+            //foundUser 
+            var user = await _userManager.FindByIdAsync(request.Id.ToString());
+            if (user == null)
+            {
+                return NotFound<string>($"UserID :  {request.Id} iS Not Founded ");
+            }
+
+            var res = await _userManager.DeleteAsync(user);
+            if (res.Succeeded)
+            {
+                return Deleted<string>("User Is Deleted Successfull");
+            }
+            return BadRequest<string>("Faild Delete");
 
         }
     }
