@@ -9,9 +9,9 @@ using SchoolManagment.Services.Abstracts;
 namespace SchoolProject.Core.Features.Students.Queries.Handlers
 {
     public class GetStudentListQueryHandler : ResponseHandler,
-        IRequestHandler<GetStudentListQuery, Response<IEnumerable<GetStudentListResponse>>>
-        , IRequestHandler<GetStudentQuery, Response<GetStudentReponse>>
-        , IRequestHandler<GetStdentByNameQuery, Response<GetStdentByNameResponse>>
+        IRequestHandler<GetStudentListQuery, Responses<IEnumerable<GetStudentListResponse>>>
+        , IRequestHandler<GetStudentQuery, Responses<GetStudentReponse>>
+        , IRequestHandler<GetStdentByNameQuery, Responses<GetStdentByNameResponse>>
         , IRequestHandler<GetStudentListPaginatedQuery, PaginatedResult<GetStudentListPaginatedResponse>>
     {
 
@@ -31,7 +31,7 @@ namespace SchoolProject.Core.Features.Students.Queries.Handlers
 
         #region  Functions
 
-        public async Task<Response<IEnumerable<GetStudentListResponse>>> Handle(GetStudentListQuery request, CancellationToken cancellationToken)
+        public async Task<Responses<IEnumerable<GetStudentListResponse>>> Handle(GetStudentListQuery request, CancellationToken cancellationToken)
         {
             var studentList = await _studentServices.GetStudentsAysnc();
             var studentMapper = _mapper.Map<IEnumerable<GetStudentListResponse>>(studentList);
@@ -39,7 +39,7 @@ namespace SchoolProject.Core.Features.Students.Queries.Handlers
 
         }
 
-        public async Task<Response<GetStudentReponse>> Handle(GetStudentQuery request, CancellationToken cancellationToken)
+        public async Task<Responses<GetStudentReponse>> Handle(GetStudentQuery request, CancellationToken cancellationToken)
         {
             var std = await _studentServices.GetStudentByIdAysnc(request.Id);
             if (std == null)
@@ -51,7 +51,7 @@ namespace SchoolProject.Core.Features.Students.Queries.Handlers
 
         }
 
-        public async Task<Response<GetStdentByNameResponse>> Handle(GetStdentByNameQuery request, CancellationToken cancellationToken)
+        public async Task<Responses<GetStdentByNameResponse>> Handle(GetStdentByNameQuery request, CancellationToken cancellationToken)
         {
             var stdName = await _studentServices.GetStudentByNameAysnc(request.Name);
             if (stdName == null) { return NotFound<GetStdentByNameResponse>($"Name : {request.Name} not found"); }

@@ -3,25 +3,24 @@
 namespace SchoolManagment.Core.Bases
 {
 
-
-    public class Response<T>
+    public class Responses<T>
     {
-        public Response()
+        public Responses()
         {
 
         }
-        public Response(T data, string message = null)
+        public Responses(T data, string message = null)
         {
             Succeeded = true;
             Message = message;
             Data = data;
         }
-        public Response(string message)
+        public Responses(string message)
         {
             Succeeded = false;
             Message = message;
         }
-        public Response(string message, bool succeeded)
+        public Responses(string message, bool succeeded)
         {
             Succeeded = succeeded;
             Message = message;
