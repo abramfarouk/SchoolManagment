@@ -10,9 +10,9 @@ namespace SchoolManagment.Core.Features.User.Commands.Handler
 {
 
     public class AddUserCommandHandler : ResponseHandler
-        , IRequestHandler<AddUserCommand, Response<string>>
-        , IRequestHandler<UpdateUserCommand, Response<string>>
-        , IRequestHandler<DeleteUserByIdCommand, Response<string>>
+        , IRequestHandler<AddUserCommand, Responses<string>>
+        , IRequestHandler<UpdateUserCommand, Responses<string>>
+        , IRequestHandler<DeleteUserByIdCommand, Responses<string>>
     {
 
         private readonly IMapper _mapper;
@@ -23,7 +23,7 @@ namespace SchoolManagment.Core.Features.User.Commands.Handler
             _userManager = userManager;
 
         }
-        public async Task<Response<string>> Handle(AddUserCommand request, CancellationToken cancellationToken)
+        public async Task<Responses<string>> Handle(AddUserCommand request, CancellationToken cancellationToken)
         {
             var IsEmailExist = await _userManager.FindByEmailAsync(request.Email);
             if (IsEmailExist != null) { return BadRequest<string>($"Email Is Exist Must Be Change this =>{request.Email}"); }
@@ -53,7 +53,7 @@ namespace SchoolManagment.Core.Features.User.Commands.Handler
 
         }
 
-        public async Task<Response<string>> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+        public async Task<Responses<string>> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
 
             //findUser
@@ -77,7 +77,7 @@ namespace SchoolManagment.Core.Features.User.Commands.Handler
 
         }
 
-        public async Task<Response<string>> Handle(DeleteUserByIdCommand request, CancellationToken cancellationToken)
+        public async Task<Responses<string>> Handle(DeleteUserByIdCommand request, CancellationToken cancellationToken)
         {
             //foundUser 
             var user = await _userManager.FindByIdAsync(request.Id.ToString());

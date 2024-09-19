@@ -15,7 +15,7 @@ namespace SchoolSystemCleanArchitecture.Api.Base
 
 
         #region Actions
-        public ObjectResult abram<T>(Response<T> response)
+        public ObjectResult abram<T>(Responses<T> response)
         {
             switch (response.StatusCode)
             {

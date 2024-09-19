@@ -3,7 +3,7 @@ using SchoolManagment.Core.Bases;
 
 namespace SchoolManagment.Core.Features.Students.Commands.Models
 {
-    public class DeleteStudentCommand : IRequest<Response<string>>
+    public class DeleteStudentCommand : IRequest<Responses<string>>
     {
         public int Id { get; set; }
 

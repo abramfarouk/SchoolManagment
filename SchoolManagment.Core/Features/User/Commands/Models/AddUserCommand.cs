@@ -3,7 +3,7 @@ using SchoolManagment.Core.Bases;
 
 namespace SchoolManagment.Core.Features.User.Commands.Models
 {
-    public class AddUserCommand : IRequest<Response<string>>
+    public class AddUserCommand : IRequest<Responses<string>>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

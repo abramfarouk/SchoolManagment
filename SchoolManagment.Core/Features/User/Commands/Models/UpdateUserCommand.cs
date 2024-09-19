@@ -3,7 +3,7 @@ using SchoolManagment.Core.Bases;
 
 namespace SchoolManagment.Core.Features.User.Commands.Models
 {
-    public class UpdateUserCommand : IRequest<Response<string>>
+    public class UpdateUserCommand : IRequest<Responses<string>>
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

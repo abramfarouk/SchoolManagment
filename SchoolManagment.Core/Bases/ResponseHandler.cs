@@ -9,18 +9,18 @@
         {
 
         }
-        public Response<T> Deleted<T>(string mess)
+        public Responses<T> Deleted<T>(string mess)
         {
-            return new Response<T>()
+            return new Responses<T>()
             {
                 StatusCode = System.Net.HttpStatusCode.OK,
                 Succeeded = true,
                 Message = mess == null ? "Deleted Successfully" : mess
             };
         }
-        public Response<T> Success<T>(T entity, object Meta = null)
+        public Responses<T> Success<T>(T entity, object Meta = null)
         {
-            return new Response<T>()
+            return new Responses<T>()
             {
                 Data = entity,
                 StatusCode = System.Net.HttpStatusCode.OK,
@@ -29,18 +29,18 @@
                 Meta = Meta
             };
         }
-        public Response<T> Unauthorized<T>()
+        public Responses<T> Unauthorized<T>()
         {
-            return new Response<T>()
+            return new Responses<T>()
             {
                 StatusCode = System.Net.HttpStatusCode.Unauthorized,
                 Succeeded = true,
                 Message = "UnAuthorized"
             };
         }
-        public Response<T> BadRequest<T>(string Message = null)
+        public Responses<T> BadRequest<T>(string Message = null)
         {
-            return new Response<T>()
+            return new Responses<T>()
             {
                 StatusCode = System.Net.HttpStatusCode.BadRequest,
                 Succeeded = false,
@@ -48,9 +48,9 @@
             };
         }
 
-        public Response<List<T>> BadRequestT<T>(string Message = null)
+        public Responses<List<T>> BadRequestT<T>(string Message = null)
         {
-            return new Response<List<T>>()
+            return new Responses<List<T>>()
             {
                 StatusCode = System.Net.HttpStatusCode.BadRequest,
                 Succeeded = false,
@@ -58,18 +58,18 @@
             };
         }
 
-        public Response<T> NotFound<T>(string message = null)
+        public Responses<T> NotFound<T>(string message = null)
         {
-            return new Response<T>()
+            return new Responses<T>()
             {
                 StatusCode = System.Net.HttpStatusCode.NotFound,
                 Succeeded = false,
                 Message = message == null ? "Not Found" : message
             };
         }
-        public Response<T> UnprocessableEntity<T>(string message = null)
+        public Responses<T> UnprocessableEntity<T>(string message = null)
         {
-            return new Response<T>()
+            return new Responses<T>()
             {
                 StatusCode = System.Net.HttpStatusCode.UnprocessableEntity,
                 Succeeded = false,
@@ -77,9 +77,9 @@
             };
         }
 
-        public Response<T> Created<T>(T entity, object Meta = null)
+        public Responses<T> Created<T>(T entity, object Meta = null)
         {
-            return new Response<T>()
+            return new Responses<T>()
             {
                 Data = entity,
                 StatusCode = System.Net.HttpStatusCode.Created,

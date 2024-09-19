@@ -13,7 +13,7 @@ namespace SchoolManagment.Core.Features.User.Queries.Handler
 {
     public class GetUserQueryHandler : ResponseHandler
         , IRequestHandler<GetListUserQuery, PaginatedResult<GetListUserResponse>>
-        , IRequestHandler<GetUserByIdQuery, Response<GetUserByIdResponse>>
+        , IRequestHandler<GetUserByIdQuery, Responses<GetUserByIdResponse>>
     {
         private readonly IMapper _mapper;
         private readonly UserManager<user> _userManager;
@@ -30,7 +30,7 @@ namespace SchoolManagment.Core.Features.User.Queries.Handler
             return PigatinationList;
         }
 
-        public async Task<Response<GetUserByIdResponse>> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
+        public async Task<Responses<GetUserByIdResponse>> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
             var users = await _userManager.Users.FirstOrDefaultAsync(d => d.Id == request.Id);
             if (users == null) { return NotFound<GetUserByIdResponse>($"ID Not Founded {request.Id}"); }
