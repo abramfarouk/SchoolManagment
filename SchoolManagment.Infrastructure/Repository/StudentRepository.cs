@@ -12,9 +12,9 @@ namespace SchoolManagment.Infrastructure.Repository
 
         public StudentRepository(ApplicationDbContext context) : base(context)
         {
-            {
-                _students = context.Set<Student>();
-            }
+
+            _students = context.Set<Student>();
+
         }
 
         public async Task<IEnumerable<Student>> GetStudentsAsync()

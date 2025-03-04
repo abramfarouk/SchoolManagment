@@ -8,9 +8,9 @@ using SchoolManagment.Services.Abstracts;
 namespace SchoolManagment.Core.Features.Students.Commands.Handlers
 {
     public class AddStudentCommandHandler : ResponseHandler,
-        IRequestHandler<CreateStudentCommand, Response<string>>,
-         IRequestHandler<EditStudentCommand, Response<string>>,
-         IRequestHandler<DeleteStudentCommand, Response<string>>
+        IRequestHandler<CreateStudentCommand, Responses<string>>,
+         IRequestHandler<EditStudentCommand, Responses<string>>,
+         IRequestHandler<DeleteStudentCommand, Responses<string>>
     {
         private readonly IMapper _mapper;
         private readonly IStudentServices _studentServices;
@@ -20,7 +20,7 @@ namespace SchoolManagment.Core.Features.Students.Commands.Handlers
             _mapper = mapper;
             _studentServices = studentServices;
         }
-        public async Task<Response<string>> Handle(CreateStudentCommand request, CancellationToken cancellationToken)
+        public async Task<Responses<string>> Handle(CreateStudentCommand request, CancellationToken cancellationToken)
         {
             var StdMapper = _mapper.Map<Student>(request);
             var stdres = await _studentServices.AddStudentAsync(StdMapper);
@@ -37,7 +37,7 @@ namespace SchoolManagment.Core.Features.Students.Commands.Handlers
 
         }
 
-        public async Task<Response<string>> Handle(EditStudentCommand request, CancellationToken cancellationToken)
+        public async Task<Responses<string>> Handle(EditStudentCommand request, CancellationToken cancellationToken)
         {
             var Std = await _studentServices.GetStudentByIdAysnc(request.Id);
             if (Std == null)
@@ -57,7 +57,7 @@ namespace SchoolManagment.Core.Features.Students.Commands.Handlers
 
         }
 
-        public async Task<Response<string>> Handle(DeleteStudentCommand request, CancellationToken cancellationToken)
+        public async Task<Responses<string>> Handle(DeleteStudentCommand request, CancellationToken cancellationToken)
         {
             var std = await _studentServices.GetStudentByIdAysnc(request.Id);
             if (std == null) { return NotFound<string>("ID Is Not Founded"); }

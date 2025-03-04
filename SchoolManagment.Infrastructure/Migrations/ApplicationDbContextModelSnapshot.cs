@@ -140,7 +140,7 @@ namespace SchoolManagment.Infrastructure.Migrations
 
                     b.HasKey("DID");
 
-                    b.ToTable("Departments", (string)null);
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("SchoolManagment.Data.Entities.DepartmetSubject", b =>
@@ -163,7 +163,7 @@ namespace SchoolManagment.Infrastructure.Migrations
 
                     b.HasIndex("SubID");
 
-                    b.ToTable("DepartmetSubjects", (string)null);
+                    b.ToTable("DepartmetSubjects");
                 });
 
             modelBuilder.Entity("SchoolManagment.Data.Entities.Identity.Role", b =>
@@ -174,8 +174,14 @@ namespace SchoolManagment.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -208,7 +214,6 @@ namespace SchoolManagment.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -216,7 +221,6 @@ namespace SchoolManagment.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -225,6 +229,14 @@ namespace SchoolManagment.Infrastructure.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -302,7 +314,7 @@ namespace SchoolManagment.Infrastructure.Migrations
 
                     b.HasIndex("DID");
 
-                    b.ToTable("Students", (string)null);
+                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("SchoolManagment.Data.Entities.StudentSubject", b =>
@@ -325,7 +337,7 @@ namespace SchoolManagment.Infrastructure.Migrations
 
                     b.HasIndex("SubID");
 
-                    b.ToTable("StudentSubjects", (string)null);
+                    b.ToTable("StudentSubjects");
                 });
 
             modelBuilder.Entity("SchoolManagment.Data.Entities.Subjects", b =>
@@ -346,7 +358,7 @@ namespace SchoolManagment.Infrastructure.Migrations
 
                     b.HasKey("SubID");
 
-                    b.ToTable("Subjects", (string)null);
+                    b.ToTable("Subjects");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

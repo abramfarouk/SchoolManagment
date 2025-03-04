@@ -38,5 +38,4 @@ namespace SchoolManagment.Core.Behavior
 
 
 
-
 }

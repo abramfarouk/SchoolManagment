@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SchoolManagment.Core.Features.Students.Commands.Models;
 using SchoolManagment.Core.Features.Students.Queries.Models;
 using SchoolManagment.Data.AppMetaData;
@@ -7,6 +8,7 @@ using SchoolSystemCleanArchitecture.Api.Base;
 namespace SchoolManagment.API.Controllers
 {
     [ApiController]
+    [Authorize]
     public class StudentController : AppControllerBase
     {
 
@@ -16,6 +18,7 @@ namespace SchoolManagment.API.Controllers
             var response = await _mediator.Send(new GetStudentListQuery());
             return abram(response);
         }
+        [AllowAnonymous]
 
         [HttpGet(Router.StudentRouting.GetById)]
         public async Task<IActionResult> GetStdById(int id)

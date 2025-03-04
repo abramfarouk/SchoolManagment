@@ -20,6 +20,33 @@
 
 
         }
+        public static class AccountRouting
+        {
+            public const string Prefix = Rule + "Account/";
+            public const string Login = Prefix + "Login";
+            public const string GetUserById = Prefix + "{id:int}";
+            public const string GetUserByName = Prefix + "{name:Alpha}";
+            public const string Create = Prefix + "Regiter";
+            public const string Pagination = Prefix + "Pagination";
+            public const string Delete = Prefix + "Delete";
+            public const string Edit = Prefix + "Edit";
+
+
+        }
+
+        public static class AuthenticationRouting
+        {
+            public const string Prefix = Rule + "Authenication/";
+            public const string Login = Prefix + "Login";
+            public const string GetUserById = Prefix + "{id:int}";
+            public const string GetUserByName = Prefix + "{name:Alpha}";
+            public const string Create = Prefix + "Regiter";
+            public const string Pagination = Prefix + "Pagination";
+            public const string Delete = Prefix + "Delete";
+            public const string SignIn = Prefix + "SignIn";
+
+
+        }
 
     }
 }
